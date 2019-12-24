@@ -1,0 +1,450 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BA635B92215A364A0048AB9A /* DingTalkMacPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = BA635B91215A364A0048AB9A /* DingTalkMacPlugin.h */; };
+		BA635B94215A364A0048AB9A /* DingTalkMacPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = BA635B93215A364A0048AB9A /* DingTalkMacPlugin.m */; };
+		BA635B96215A364A0048AB9A /* DingTalkMacPluginHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = BA635B95215A364A0048AB9A /* DingTalkMacPluginHeader.h */; };
+		BA635B98215A364A0048AB9A /* PrefixHeader.pch in Headers */ = {isa = PBXBuildFile; fileRef = BA635B97215A364A0048AB9A /* PrefixHeader.pch */; };
+		BA635BB2215BAD350048AB9A /* CRNode.h in Headers */ = {isa = PBXBuildFile; fileRef = BA635BB0215BAD350048AB9A /* CRNode.h */; };
+		BA635BB3215BAD350048AB9A /* CRNode.m in Sources */ = {isa = PBXBuildFile; fileRef = BA635BB1215BAD350048AB9A /* CRNode.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BA635B89215A36490048AB9A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA635B7B215A36490048AB9A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA635B83215A36490048AB9A;
+			remoteInfo = DingTalkMacPlugin;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BA635B84215A36490048AB9A /* DingTalkMacPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DingTalkMacPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA635B88215A36490048AB9A /* DingTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DingTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA635B8D215A36490048AB9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA635B91215A364A0048AB9A /* DingTalkMacPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DingTalkMacPlugin.h; sourceTree = "<group>"; };
+		BA635B93215A364A0048AB9A /* DingTalkMacPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DingTalkMacPlugin.m; sourceTree = "<group>"; };
+		BA635B95215A364A0048AB9A /* DingTalkMacPluginHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DingTalkMacPluginHeader.h; sourceTree = "<group>"; };
+		BA635B97215A364A0048AB9A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		BA635BB0215BAD350048AB9A /* CRNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRNode.h; path = ../../MySvn/SDK/Foundation/Category/CRNode.h; sourceTree = "<group>"; };
+		BA635BB1215BAD350048AB9A /* CRNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRNode.m; path = ../../MySvn/SDK/Foundation/Category/CRNode.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BA635B81215A36490048AB9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BA635B7A215A36490048AB9A = {
+			isa = PBXGroup;
+			children = (
+				BA635BB0215BAD350048AB9A /* CRNode.h */,
+				BA635BB1215BAD350048AB9A /* CRNode.m */,
+				BA635B8B215A36490048AB9A /* DingTalkMacPlugin */,
+				BA635B85215A36490048AB9A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BA635B85215A36490048AB9A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BA635B84215A36490048AB9A /* DingTalkMacPlugin.framework */,
+				BA635B88215A36490048AB9A /* DingTalk.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BA635B8B215A36490048AB9A /* DingTalkMacPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				BA635B91215A364A0048AB9A /* DingTalkMacPlugin.h */,
+				BA635B93215A364A0048AB9A /* DingTalkMacPlugin.m */,
+				BA635B95215A364A0048AB9A /* DingTalkMacPluginHeader.h */,
+				BA635B8C215A36490048AB9A /* Supporting Files */,
+			);
+			path = DingTalkMacPlugin;
+			sourceTree = "<group>";
+		};
+		BA635B8C215A36490048AB9A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BA635B8D215A36490048AB9A /* Info.plist */,
+				BA635B97215A364A0048AB9A /* PrefixHeader.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BA635B7F215A36490048AB9A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA635B96215A364A0048AB9A /* DingTalkMacPluginHeader.h in Headers */,
+				BA635BB2215BAD350048AB9A /* CRNode.h in Headers */,
+				BA635B92215A364A0048AB9A /* DingTalkMacPlugin.h in Headers */,
+				BA635B98215A364A0048AB9A /* PrefixHeader.pch in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		BA635B83215A36490048AB9A /* DingTalkMacPlugin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA635B9D215A364A0048AB9A /* Build configuration list for PBXNativeTarget "DingTalkMacPlugin" */;
+			buildPhases = (
+				BA635B7F215A36490048AB9A /* Headers */,
+				BA635B80215A36490048AB9A /* Sources */,
+				BA635B81215A36490048AB9A /* Frameworks */,
+				BA635B82215A36490048AB9A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DingTalkMacPlugin;
+			productName = DingTalkMacPlugin;
+			productReference = BA635B84215A36490048AB9A /* DingTalkMacPlugin.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		BA635B87215A36490048AB9A /* DingTalk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA635BA0215A364A0048AB9A /* Build configuration list for PBXNativeTarget "DingTalk" */;
+			buildPhases = (
+				BA635B86215A36490048AB9A /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA635B8A215A36490048AB9A /* PBXTargetDependency */,
+			);
+			name = DingTalk;
+			productName = DingTalk;
+			productReference = BA635B88215A36490048AB9A /* DingTalk.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BA635B7B215A36490048AB9A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = TozyZuo;
+				TargetAttributes = {
+					BA635B83215A36490048AB9A = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					BA635B87215A36490048AB9A = {
+						CreatedOnToolsVersion = 10.0;
+					};
+				};
+			};
+			buildConfigurationList = BA635B7E215A36490048AB9A /* Build configuration list for PBXProject "DingTalkMacPlugin" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BA635B7A215A36490048AB9A;
+			productRefGroup = BA635B85215A36490048AB9A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BA635B83215A36490048AB9A /* DingTalkMacPlugin */,
+				BA635B87215A36490048AB9A /* DingTalk */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BA635B82215A36490048AB9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BA635B86215A36490048AB9A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APP_NAME=\"DingTalk\"\nFRAMEWORK_NAME=\"DingTalkMacPlugin\"\n\nrm -rf \"${BUILT_PRODUCTS_DIR}/${APP_NAME}.app\"\ncp -R \"${PROJECT_DIR}/${APP_NAME}.app\" \"${BUILT_PRODUCTS_DIR}/\"\n\nAPP_BUNDLE_PATH=\"${BUILT_PRODUCTS_DIR}/${APP_NAME}.app/Contents/MacOS\"\nAPP_EXECUTABLE_PATH=\"${APP_BUNDLE_PATH}/${APP_NAME}\"\n\ncp -R \"${BUILT_PRODUCTS_DIR}/${FRAMEWORK_NAME}.framework\" ${APP_BUNDLE_PATH}\n\ninsert_dylib --all-yes \"@loader_path/${FRAMEWORK_NAME}.framework/${FRAMEWORK_NAME}\" \"$APP_EXECUTABLE_PATH\" \"$APP_EXECUTABLE_PATH\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BA635B80215A36490048AB9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA635BB3215BAD350048AB9A /* CRNode.m in Sources */,
+				BA635B94215A364A0048AB9A /* DingTalkMacPlugin.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BA635B8A215A36490048AB9A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BA635B83215A36490048AB9A /* DingTalkMacPlugin */;
+			targetProxy = BA635B89215A36490048AB9A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		BA635B9B215A364A0048AB9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = NO;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BA635B9C215A364A0048AB9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		BA635B9E215A364A0048AB9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = H6D9Z3495Q;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = DingTalkMacPlugin/PrefixHeader.pch;
+				HEADER_SEARCH_PATHS = "$(MonkeyDevPath)/include";
+				INFOPLIST_FILE = DingTalkMacPlugin/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				MonkeyDevPath = /opt/MonkeyDev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tozy.DingTalkMacPlugin;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		BA635B9F215A364A0048AB9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = H6D9Z3495Q;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = DingTalkMacPlugin/PrefixHeader.pch;
+				HEADER_SEARCH_PATHS = "$(MonkeyDevPath)/include";
+				INFOPLIST_FILE = DingTalkMacPlugin/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				MonkeyDevPath = /opt/MonkeyDev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tozy.DingTalkMacPlugin;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		BA635BA1215A364A0048AB9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = H6D9Z3495Q;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				INFOPLIST_FILE = DingTalkMacPlugin/Info.plist;
+				MONKEYDEV_RESTORE_SYMBOL = YES;
+				PRODUCT_NAME = DingTalk;
+			};
+			name = Debug;
+		};
+		BA635BA2215A364A0048AB9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = H6D9Z3495Q;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				INFOPLIST_FILE = DingTalkMacPlugin/Info.plist;
+				MONKEYDEV_RESTORE_SYMBOL = YES;
+				PRODUCT_NAME = DingTalk;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BA635B7E215A36490048AB9A /* Build configuration list for PBXProject "DingTalkMacPlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA635B9B215A364A0048AB9A /* Debug */,
+				BA635B9C215A364A0048AB9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA635B9D215A364A0048AB9A /* Build configuration list for PBXNativeTarget "DingTalkMacPlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA635B9E215A364A0048AB9A /* Debug */,
+				BA635B9F215A364A0048AB9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA635BA0215A364A0048AB9A /* Build configuration list for PBXNativeTarget "DingTalk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA635BA1215A364A0048AB9A /* Debug */,
+				BA635BA2215A364A0048AB9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BA635B7B215A36490048AB9A /* Project object */;
+}
