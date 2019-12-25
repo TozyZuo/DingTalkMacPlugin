@@ -256,3 +256,38 @@
 
 @end
 
+@interface DTBaseTextAttachmentCell : NSTextAttachmentCell
+{
+    BOOL _isAnimating;
+    BOOL _isMouseIn;
+}
+
+@property (nonatomic) BOOL isAnimating;
+@property (nonatomic) BOOL isMouseIn;
+
+- (BOOL)shouldDoSomeAtPoint:(struct CGPoint)arg1 hasUIChange:(char *)arg2;
+- (void)mouseExisted;
+
+@end
+
+@interface DTEmotionCell : DTBaseTextAttachmentCell
+{
+    NSString *_emotionId;
+    NSString *_localizedName;
+    NSString *_name;
+}
+
+@property (copy) NSString *emotionId;
+@property (copy) NSString *localizedName;
+@property (copy) NSString *name;
+
++ (id)emotionCellWithName:(id)arg1 emotionId:(id)arg2;
++ (id)emotionCellWithName:(id)arg1 emotionId:(id)arg2 packageId:(id)arg3;
+- (id)initWithCoder:(id)arg1;
+- (struct CGRect)cellFrameForTextContainer:(id)arg1 proposedLineFragment:(struct CGRect)arg2 glyphPosition:(struct CGPoint)arg3 characterIndex:(unsigned long long)arg4;
+- (id)cellAttributes;
+- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (void)encodeWithCoder:(id)arg1;
+
+@end
+
