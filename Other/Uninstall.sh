@@ -20,10 +20,11 @@ if [ ! -d "$app_path" ]; then
   fi
 fi
 
+app_frameworks_path="${app_path}/Contents/Frameworks"
+plugin_path="${app_frameworks_path}/${plugin_name}.framework"
 app_bundle_path="${app_path}/Contents/MacOS"
 app_executable_path="${app_bundle_path}/${app_name}"
 app_executable_backup_path="${app_executable_path}_backup"
-plugin_path="${app_bundle_path}/${plugin_name}.framework"
 
 if [ -f "$app_executable_backup_path" ]
 then
@@ -32,7 +33,7 @@ then
 	mv "$app_executable_backup_path" "$app_executable_path"
 
 	if [ -f "$app_executable_backup_path" ]; then
-		echo "卸载失败，请到 ${app_bundle_path} 路径，删除 ${plugin_path}、${app_name} 两个个文件，并将 ${app_name}_backup 重命名为 ${app_name}"
+		echo "卸载失败，请到 ${app_frameworks_path} 路径，删除 ${plugin_name}.framework，${app_bundle_path} 路径，删除 ${app_name} ，并将 ${app_name}_backup 重命名为 ${app_name}"
 	else
 		echo "卸载成功"
 	fi
