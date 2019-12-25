@@ -75,7 +75,7 @@ if [ -z $latest_version ]; then
   else
     latest_version=${latest_version//$'\r'/}
     echo 最新插件版本为 v${latest_version}
-    if [ "$current_version" != $latest_version ]; then
+    if [[ $current_version < $latest_version ]]; then
       download_plugin $latest_version
     else
       echo 当前已是最新版本。
