@@ -13,3 +13,6 @@ curl -o- -L https://github.com/TozyZuo/DingTalkMacPlugin/raw/master/Other/Online
 ```sh
 curl -o- -L https://github.com/TozyZuo/DingTalkMacPlugin/raw/master/Other/Uninstall.sh | bash -s
 ```
+
+## 功能
+- [x] 表情通过快捷键输入， 如 /wlk --> [捂脸哭]
