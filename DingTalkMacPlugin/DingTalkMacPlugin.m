@@ -58,6 +58,25 @@ CHOptimizedMethod1(self, void, AppDelegate, applicationDidFinishLaunching, id, a
     [TZMenuManager.sharedManager configMenus];
 }
 
+static void FetchEmotions()
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        DTEmotionService *emotionService = [NSClassFromString(@"DTEmotionService") sharedService];
+        NSArray *emotions = emotionService.defaultEmotions;
+        
+        if (emotions.count) {
+            _manager = [[TZEmotionShortcutManager alloc] init];
+            _manager.emotions = emotions;
+            TZMenuManager.sharedManager.configMenuItem.enabled = YES;
+        } else {
+            static int times = 0;
+            TLog(@"Fetch emotions failed. Retry %d times.", ++times);
+            TZMenuManager.sharedManager.configMenuItem.enabled = NO;
+            FetchEmotions();
+        }
+    });
+}
+
 CHConstructor {
     CHLoadLateClass(AppDelegate);
     CHHook1(AppDelegate, applicationDidFinishLaunching);
@@ -65,13 +84,5 @@ CHConstructor {
     CHLoadLateClass(DTChatInputTextView);
     CHHook0(DTChatInputTextView, didChangeText);
 
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        DTEmotionService *emotionService = [NSClassFromString(@"DTEmotionService") sharedService];
-        NSArray *emotions = emotionService.defaultEmotions;
-
-        if (emotions) {
-            _manager = [[TZEmotionShortcutManager alloc] init];
-            _manager.emotions = emotions;
-        }
-    });
+    FetchEmotions();
 }

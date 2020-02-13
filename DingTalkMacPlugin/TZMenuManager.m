@@ -10,6 +10,7 @@
 @interface TZMenuManager ()
 <NSApplicationDelegate>
 //@property (nonatomic, strong) NSMenuItem *shortcutItem;
+@property (nonatomic, strong) NSMenuItem *configMenuItem;
 @end
 
 @implementation TZMenuManager
@@ -31,6 +32,8 @@
     newItem.submenu = newMenu;
     
     [mainMenu addItem:newItem];
+    
+    self.configMenuItem = newItem;
 }
 
 @end

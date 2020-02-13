@@ -8,6 +8,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TZMenuManager : TZManager
+@property (readonly) NSMenuItem *configMenuItem;
 - (void)configMenus;
 @end
 
