@@ -20,25 +20,19 @@ CHDeclareClass(DTChatInputTextView)
 CHOptimizedMethod0(self, void, DTChatInputTextView, didChangeText)
 {
     if (TZConfigManager.sharedManager.shortcutEnable) {
-        BOOL matchEmotion = NO;
         NSUInteger maxLocation = self.selectedRange.location;
         
-        TZEmotionMatchingResult *result = [_manager matchString:self.textStorage.string range:NSMakeRange(0, maxLocation)];
+        TZEmotionMatchingResult *result = [_manager matchString:self.textStorage.string range:NSMakeRange(0, maxLocation)].lastObject;
+        NSRange range = result.range;
         
-        while (result) {
-            NSUInteger location = NSMaxRange(result.range);
-            if (location != maxLocation) {
-                result = [_manager matchString:self.textStorage.string range:NSMakeRange(location, maxLocation - location)];
-                continue;
-            }
-            matchEmotion = YES;
-            
-            DTEmotionInfo *emotion = result.emotion;
-            NSRange range = result.range;
+        if (NSMaxRange(range) == self.selectedRange.location &&
+            result.emotions.count == 1)
+        {
+            DTEmotionInfo *emotion = result.emotions.firstObject;
             
             [self.textStorage replaceCharactersInRange:range withString:@""];
 #if 1
-            DTEmotionCell *cell = [NSClassFromString(@"DTEmotionCell") emotionCellWithName:result.emotion.name emotionId:emotion.emotionId packageId:emotion.packageId];
+            DTEmotionCell *cell = [NSClassFromString(@"DTEmotionCell") emotionCellWithName:emotion.name emotionId:emotion.emotionId packageId:emotion.packageId];
             NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
             textAttachment.attachmentCell = cell;
             NSAttributedString *emotionString = [NSAttributedString attributedStringWithAttachment:textAttachment];
@@ -46,11 +40,8 @@ CHOptimizedMethod0(self, void, DTChatInputTextView, didChangeText)
 #else
             [self insertDefaultEmotion:emotion.name emotionId:emotion.emotionId packageId:emotion.packageId];
 #endif
-            maxLocation = self.selectedRange.location;
-            result = [_manager matchString:self.textStorage.string range:NSMakeRange(0, maxLocation)];
+            return;
         }
-        
-        if (matchEmotion) return;
     }
     CHSuper0(DTChatInputTextView, didChangeText);
 }

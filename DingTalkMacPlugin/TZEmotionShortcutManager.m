@@ -54,7 +54,7 @@ static CGFloat PriorityForFilterConditionAndString(NSString *conditionText, NSSt
 
 @interface TZEmotionMatchingResult ()
 @property (readwrite) NSRange range;
-@property (readwrite) id<TZEmotion> emotion;
+@property (readwrite) NSArray<id<TZEmotion>> *emotions;
 @end
 @implementation TZEmotionMatchingResult
 @end
@@ -111,12 +111,12 @@ static CGFloat PriorityForFilterConditionAndString(NSString *conditionText, NSSt
     }
 }
 
-- (TZEmotionMatchingResult *)matchString:(NSString *)string
+- (NSArray<TZEmotionMatchingResult *> *)matchString:(NSString *)string
 {
     return [self matchString:string range:NSMakeRange(0, string.length)];
 }
 
-- (nullable TZEmotionMatchingResult *)matchString:(NSString *)string range:(NSRange)range;
+- (NSArray<TZEmotionMatchingResult *> *)matchString:(NSString *)string range:(NSRange)range
 {
     NSArray<NSTextCheckingResult *> *results = [_shortcutRegularExpression matchesInString:string options:0 range:range];
     
@@ -127,6 +127,7 @@ static CGFloat PriorityForFilterConditionAndString(NSString *conditionText, NSSt
         }
         TLog(@"Match %@", [matchStrings componentsJoinedByString:@" "]);
         
+        NSMutableArray<TZEmotionMatchingResult *> *ret = NSMutableArray.new;
         for (int i = 0; i < results.count; i++) {
             NSString *key = matchStrings[i];
             NSMutableArray *keys = NSMutableArray.new;
@@ -138,17 +139,23 @@ static CGFloat PriorityForFilterConditionAndString(NSString *conditionText, NSSt
                     break;
                 }
                 if (priority > 0) {
+                    // TODO 优先级排序
                     [keys addObject:aKey];
                 }
             }
             TLog(@"%@ match keys: %@", key, keys);
-            if (keys.count == 1) {
-                TZEmotionMatchingResult *result = [[TZEmotionMatchingResult alloc] init];
-                result.emotion = _shortcutMap[keys.firstObject];
-                result.range = results[i].range;
-                return result;
+            
+            TZEmotionMatchingResult *result = [[TZEmotionMatchingResult alloc] init];
+            result.range = results[i].range;
+            NSMutableArray<id<TZEmotion>> *emotions = NSMutableArray.new;
+            for (NSString *key in keys) {
+                [emotions addObject:_shortcutMap[key]];
             }
+            result.emotions = emotions;
+            [ret addObject:result];
         }
+        
+        return ret.count ? ret : nil;
     }
     
     return nil;

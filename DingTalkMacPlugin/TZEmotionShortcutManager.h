@@ -16,13 +16,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TZEmotionMatchingResult : NSObject
 @property (readonly) NSRange range;
-@property (readonly) id<TZEmotion> emotion;
+@property (readonly) NSArray<id<TZEmotion>> *emotions;
 @end
 
 @interface TZEmotionShortcutManager : NSObject
 @property (nonatomic, strong) NSArray<id<TZEmotion>> *emotions;
-- (nullable TZEmotionMatchingResult *)matchString:(NSString *)string;
-- (nullable TZEmotionMatchingResult *)matchString:(NSString *)string range:(NSRange)range;
+- (nullable NSArray<TZEmotionMatchingResult *> *)matchString:(NSString *)string;
+- (nullable NSArray<TZEmotionMatchingResult *> *)matchString:(NSString *)string range:(NSRange)range;
 @end
 
 NS_ASSUME_NONNULL_END
