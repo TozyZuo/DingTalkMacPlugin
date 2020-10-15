@@ -23,7 +23,7 @@ if [ ! -d "$app_path" ]; then
   fi
 fi
 
-version_file=${app_path}/Contents/MacOS/${plugin_name}.framework/Resources/Info.plist
+version_file=${app_path}/Contents/MacOS/Frameworks/${plugin_name}.framework/Resources/Info.plist
 
 
 open_app() {
