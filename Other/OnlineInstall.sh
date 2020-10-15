@@ -69,7 +69,7 @@ fi
 
 if [ -z $latest_version ]; then
   echo 正在检查新版本……
-  latest_version=$(curl -I -s https://github.com/TozyZuo/${plugin_name}/releases/latest | grep Location | sed -n 's/.*\/v\(.*\)/\1/p')
+  latest_version=$(curl -I -s https://github.com/TozyZuo/${plugin_name}/releases/latest | grep location | sed -n 's/.*\/v\(.*\)/\1/p')
   if [ -z "$latest_version" ]; then
     echo 检查新版本时失败
   else
