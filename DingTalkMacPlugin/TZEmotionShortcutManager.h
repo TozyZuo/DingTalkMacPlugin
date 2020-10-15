@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TZEmotionShortcutManager : NSObject
 @property (nonatomic, strong) NSArray<id<TZEmotion>> *emotions;
 - (nullable TZEmotionMatchingResult *)matchString:(NSString *)string;
+- (nullable TZEmotionMatchingResult *)matchString:(NSString *)string range:(NSRange)range;
 @end
 
 NS_ASSUME_NONNULL_END

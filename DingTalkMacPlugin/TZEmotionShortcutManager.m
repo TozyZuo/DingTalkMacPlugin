@@ -113,7 +113,12 @@ static CGFloat PriorityForFilterConditionAndString(NSString *conditionText, NSSt
 
 - (TZEmotionMatchingResult *)matchString:(NSString *)string
 {
-    NSArray<NSTextCheckingResult *> *results = [_shortcutRegularExpression matchesInString:string options:0 range:NSMakeRange(0, string.length)];
+    return [self matchString:string range:NSMakeRange(0, string.length)];
+}
+
+- (nullable TZEmotionMatchingResult *)matchString:(NSString *)string range:(NSRange)range;
+{
+    NSArray<NSTextCheckingResult *> *results = [_shortcutRegularExpression matchesInString:string options:0 range:range];
     
     if (results.count) {
         NSMutableArray *matchStrings = NSMutableArray.new;

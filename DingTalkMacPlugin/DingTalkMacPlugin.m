@@ -21,10 +21,16 @@ CHOptimizedMethod0(self, void, DTChatInputTextView, didChangeText)
 {
     if (TZConfigManager.sharedManager.shortcutEnable) {
         BOOL matchEmotion = NO;
+        NSUInteger maxLocation = self.selectedRange.location;
         
-        TZEmotionMatchingResult *result = [_manager matchString:self.textStorage.string];
+        TZEmotionMatchingResult *result = [_manager matchString:self.textStorage.string range:NSMakeRange(0, maxLocation)];
         
         while (result) {
+            NSUInteger location = NSMaxRange(result.range);
+            if (location != maxLocation) {
+                result = [_manager matchString:self.textStorage.string range:NSMakeRange(location, maxLocation - location)];
+                continue;
+            }
             matchEmotion = YES;
             
             DTEmotionInfo *emotion = result.emotion;
@@ -40,8 +46,8 @@ CHOptimizedMethod0(self, void, DTChatInputTextView, didChangeText)
 #else
             [self insertDefaultEmotion:emotion.name emotionId:emotion.emotionId packageId:emotion.packageId];
 #endif
-      
-            result = [_manager matchString:self.textStorage.string];
+            maxLocation = self.selectedRange.location;
+            result = [_manager matchString:self.textStorage.string range:NSMakeRange(0, maxLocation)];
         }
         
         if (matchEmotion) return;
