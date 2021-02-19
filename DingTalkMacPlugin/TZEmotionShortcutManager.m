@@ -61,6 +61,7 @@ static CGFloat PriorityForFilterConditionAndString(NSString *conditionText, NSSt
 
 @interface TZEmotionShortcutManager ()
 @property (nonatomic) NSMutableDictionary<NSString *, id<TZEmotion>> *shortcutMap;
+@property (nonatomic) NSMutableDictionary<NSString *, id<TZEmotion>> *map;
 @property (nonatomic) NSRegularExpression *shortcutRegularExpression;
 @end
 
@@ -70,17 +71,28 @@ static CGFloat PriorityForFilterConditionAndString(NSString *conditionText, NSSt
 {
     if (emotions) {
         _shortcutMap = NSMutableDictionary.new;
+        _map = NSMutableDictionary.new;
         NSMutableArray *dupKeys = NSMutableArray.new;
         for (id<TZEmotion> emotion in emotions) {
             NSString *name = emotion.name;
             NSString *py = WordsToPinYin(name).lowercaseString;
-            NSString *key = [NSString stringWithFormat:@"/%@", py];
+            NSString *key = [NSString stringWithFormat:@"/%@", py]; // 全拼
             NSString *spy = WordsFirstLetterToPinYin(name).lowercaseString;
-            NSString *sKey = [NSString stringWithFormat:@"/%@", spy];
+            NSString *sKey = [NSString stringWithFormat:@"/%@", spy]; // 简写
+            
+            // 全拼key
+            if ([_map.allKeys containsObject:key]) {
+                TLog(@"Duplicate key in map %@ %@ %@", key, _map[key].name, name);
+            }
+            _map[key] = emotion;
+            
+            // 短拼(包含全拼)
             if ([_shortcutMap.allKeys containsObject:key]) {
-                TLog(@"Duplicate key %@ %@ %@", key, _shortcutMap[key].name, name);
+                TLog(@"Duplicate key in shortcut map %@ %@ %@", key, _shortcutMap[key].name, name);
             }
             _shortcutMap[key] = emotion;
+            
+            // 移除重复的短拼
             if ([_shortcutMap.allKeys containsObject:sKey] && ![key isEqualToString:sKey]) {
                 TLog(@"Duplicate short Key %@ %@ %@", sKey, _shortcutMap[sKey].name, name);
                 _shortcutMap[sKey] = emotion;
@@ -98,14 +110,21 @@ static CGFloat PriorityForFilterConditionAndString(NSString *conditionText, NSSt
             for (NSString *key2 in allKeys) {
                 if ([key2 hasPrefix:key1] && ![key2 isEqualToString:key1] && _shortcutMap[key1] != _shortcutMap[key2])
                 {
-                    [set addObject:key1];
-                    TLog(@"Conflict short key key1 %@ %@ key2 %@ %@", key1, _shortcutMap[key1].name, key2, _shortcutMap[key2].name);
+                    if ([_map.allKeys containsObject:key1]) {
+                        [set addObject:key2];
+                        TLog(@"Conflict short key key1 %@ %@ key2 %@ %@ remove key2 %@", key1, _shortcutMap[key1].name, key2, _shortcutMap[key2].name, key2);
+                    } else {
+                        [set addObject:key1];
+                        TLog(@"Conflict short key key1 %@ %@ key2 %@ %@ remove key1 %@", key1, _shortcutMap[key1].name, key2, _shortcutMap[key2].name, key1);
+                    }
                 }
             }
         }
         
         [_shortcutMap removeObjectsForKeys:set.allObjects];
         TLog(@"Collection completed, %lu emotions, %lu shortcuts", (unsigned long)emotions.count, (unsigned long)_shortcutMap.count);
+        // 移除重复key
+        [_map removeObjectsForKeys:_shortcutMap.allKeys];
         
         _shortcutRegularExpression = [[NSRegularExpression alloc] initWithPattern:@"/[a-zA-Z\\d]+" options:0 error:nil];
     }
@@ -131,6 +150,7 @@ static CGFloat PriorityForFilterConditionAndString(NSString *conditionText, NSSt
         for (int i = 0; i < results.count; i++) {
             NSString *key = matchStrings[i];
             NSMutableArray *keys = NSMutableArray.new;
+            NSMutableArray<id<TZEmotion>> *emotions = NSMutableArray.new;
             for (NSString *aKey in _shortcutMap.allKeys) {
                 CGFloat priority = PriorityForFilterConditionAndString(key, aKey);
                 if (priority == 1) {
@@ -143,14 +163,33 @@ static CGFloat PriorityForFilterConditionAndString(NSString *conditionText, NSSt
                     [keys addObject:aKey];
                 }
             }
-            TLog(@"%@ match keys: %@", key, keys);
+            
+            if (keys.count) {
+                TLog(@"%@ match keys in shortcut map: %@", key, keys);
+                for (NSString *key in keys) {
+                    [emotions addObject:_shortcutMap[key]];
+                }
+            } else {
+                for (NSString *aKey in _map.allKeys) {
+                    CGFloat priority = PriorityForFilterConditionAndString(key, aKey);
+                    if (priority == 1) {
+                        [keys removeAllObjects];
+                        [keys addObject:aKey];
+                        break;
+                    }
+                    if (priority > 0) {
+                        // TODO 优先级排序
+                        [keys addObject:aKey];
+                    }
+                }
+                TLog(@"%@ match keys in map: %@", key, keys);
+                for (NSString *key in keys) {
+                    [emotions addObject:_map[key]];
+                }
+            }
             
             TZEmotionMatchingResult *result = [[TZEmotionMatchingResult alloc] init];
             result.range = results[i].range;
-            NSMutableArray<id<TZEmotion>> *emotions = NSMutableArray.new;
-            for (NSString *key in keys) {
-                [emotions addObject:_shortcutMap[key]];
-            }
             result.emotions = emotions;
             [ret addObject:result];
         }
