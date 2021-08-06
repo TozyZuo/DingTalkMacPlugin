@@ -70,6 +70,12 @@ static CGFloat PriorityForFilterConditionAndString(NSString *conditionText, NSSt
 - (void)setEmotions:(NSArray<id<TZEmotion>> *)emotions
 {
     if (emotions) {
+        NSMutableArray *logEmotions = NSMutableArray.new;
+        for (id<TZEmotion> emotion in emotions) {
+            [logEmotions addObject:emotion.name];
+        }
+        TLog(@"Emotions %@", logEmotions.debugDescription);
+        
         _shortcutMap = NSMutableDictionary.new;
         _map = NSMutableDictionary.new;
         NSMutableArray *dupKeys = NSMutableArray.new;
@@ -167,7 +173,10 @@ static CGFloat PriorityForFilterConditionAndString(NSString *conditionText, NSSt
             if (keys.count) {
                 TLog(@"%@ match keys in shortcut map: %@", key, keys);
                 for (NSString *key in keys) {
-                    [emotions addObject:_shortcutMap[key]];
+                    id<TZEmotion> emotion = _shortcutMap[key];
+                    if (![emotions containsObject:emotion]) {
+                        [emotions addObject:emotion];
+                    }
                 }
             } else {
                 for (NSString *aKey in _map.allKeys) {
@@ -184,7 +193,10 @@ static CGFloat PriorityForFilterConditionAndString(NSString *conditionText, NSSt
                 }
                 TLog(@"%@ match keys in map: %@", key, keys);
                 for (NSString *key in keys) {
-                    [emotions addObject:_map[key]];
+                    id<TZEmotion> emotion = _map[key];
+                    if (![emotions containsObject:emotion]) {
+                        [emotions addObject:emotion];
+                    }
                 }
             }
             
